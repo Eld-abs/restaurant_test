@@ -1,0 +1,14 @@
+asgiref==3.9.1
+dj-database-url==3.0.1
+Django==5.2.6
+psycopg==3.2.10
+python-dotenv==1.1.1
+dotenv==0.9.9
+sqlparse==0.5.3
+typing_extensions==4.15.0
+packaging==25.0
+
+djangorestframework==3.15.2
+djangorestframework-simplejwt==5.4.0
+drf-spectacular==0.27.2
+drf-yasg==1.21.8
