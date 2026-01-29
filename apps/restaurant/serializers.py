@@ -10,7 +10,7 @@ class DishSerializer(ModelSerializer):
 
     class Meta:
         model = Dish
-        fields = ["id", "name", "price", "category"]
+        fields = ["id", "name", "price"]
 
 
 class CategorySerializer(ModelSerializer):
@@ -30,9 +30,7 @@ class MenuSerializer(ModelSerializer):
 
 
 class OrderSerializer(ModelSerializer):
-    dishes = PrimaryKeyRelatedField(
-        queryset=Dish.objects.all(), many=True
-    )
+    dishes = PrimaryKeyRelatedField(queryset=Dish.objects.all(), many=True)
     restaurant = PrimaryKeyRelatedField(
         queryset=Restaurant.objects.all(), write_only=True
     )
@@ -60,7 +58,6 @@ class OrderSerializer(ModelSerializer):
     def create(self, validated_data):
         dishes = validated_data.pop("dishes")
         validated_data.pop("restaurant")
-        print(validated_data)
         order = Order.objects.create(**validated_data)
         order.dishes.set(dishes)
 

@@ -1,0 +1,30 @@
+services:
+  restaurant:
+    build: .
+    ports:
+      - "8005:8005"
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-secret-key-lsjojaffdjlslajsgoirhraeihgiilsehlgirjjsagagaerwrwtgaaagavzngmjgkgfjytdhrgsovnmcmxdwijfowenvdsznznozsnrguwoqqoiieihogb
+
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/restaurant_db
+
+    command: > 
+      sh -c "
+        python manage.py migrate --noinput &&
+        python manage.py runserver 0.0.0.0:8005
+      "
+  db: 
+    image: postgres:15
+    restart: always 
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=restaurant_db
+    volumes:
+      - postgresql:/var/lib/postgresql
+
+volumes: 
+  postgresql:
