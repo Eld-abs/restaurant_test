@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # modules
     "rest_framework",
     # "rest_framework_simplejwt",
-    # "drf_spectacular",
+    "drf_spectacular",
 
     # apps
     # "apps.my_app.apps.MyAppConfig"
@@ -139,5 +139,5 @@ REST_FRAMEWORK = {
 #   "DEFAULT_PERMISSION_CLASSES": [
 #     "rest_framework.permissions.IsAuthenticatedOrReadOnly",
 #   ],
-#   "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+  "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
